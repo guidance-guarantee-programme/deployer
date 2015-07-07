@@ -20,9 +20,9 @@
         <tr>
           <td><%= app.name %></td>
           <td><%= app.staging.slug %></td>
-          <td><%= app.staging.released_at %></td>
+          <td><%= humanize(app.staging.released_at) %></td>
           <td><%= app.production.slug %></td>
-          <td><%= app.production.released_at %></td>
+          <td><%= humanize(app.production.released_at) %></td>
         </tr>
       <% end %>
     </table>
