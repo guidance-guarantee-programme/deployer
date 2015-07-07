@@ -2,5 +2,29 @@
 <html>
   <body>
     <h1>Deployer</h1>
+
+    <table>
+      <tr>
+        <th>App</th>
+        <th colspan="2">Staging</th>
+        <th colspan="2">Production</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Current Slug</th>
+        <th>Last Released</th>
+        <th>Current Slug</th>
+        <th>Last Released</th>
+      </tr>
+      <% for app in @apps do %>
+        <tr>
+          <td><%= app.name %></td>
+          <td><%= app.staging.slug %></td>
+          <td><%= app.staging.released_at %></td>
+          <td><%= app.production.slug %></td>
+          <td><%= app.production.released_at %></td>
+        </tr>
+      <% end %>
+    </table>
   </body>
 </html>
