@@ -16,6 +16,6 @@ class Release
   attr_accessor :app_id
 
   def release
-    @release ||= $heroku.release.list(app_id).to_a.last
+    @release ||= $heroku.release.list(app_id).first
   end
 end

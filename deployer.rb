@@ -5,7 +5,7 @@ require_relative 'domain/app'
 
 class Deployer < Sinatra::Base
   configure do
-    $heroku = PlatformAPI.connect_oauth(ENV['HEROKU_PLATFORM_API_KEY'])
+    $heroku = PlatformAPI.connect_oauth(ENV['HEROKU_PLATFORM_API_KEY'], default_headers: {'Range' => 'version; order=desc, max=1'})
   end
 
   helpers do
