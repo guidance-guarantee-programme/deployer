@@ -1,8 +1,21 @@
 class Release
-  attr_accessor :slug, :released_at
-
   def initialize(app_id)
-    self.slug = 'bb19a6cc-3de0-460c-9786-ec263079afc8'
-    self.released_at = '2015-07-07T09:02:03Z'
+    self.app_id = app_id
+  end
+
+  def slug
+    release['slug']['id']
+  end
+
+  def released_at
+    release['created_at']
+  end
+
+  private
+
+  attr_accessor :app_id
+
+  def release
+    @release ||= $heroku.release.list(app_id).to_a.last
   end
 end

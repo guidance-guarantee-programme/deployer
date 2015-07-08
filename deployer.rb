@@ -1,8 +1,13 @@
 require 'sinatra/base'
+require 'platform-api'
 
 require_relative 'domain/app'
 
 class Deployer < Sinatra::Base
+  configure do
+    $heroku = PlatformAPI.connect_oauth(ENV['HEROKU_PLATFORM_API_KEY'])
+  end
+
   helpers do
     def humanize(released_at)
       secs = Time.now - DateTime.parse(released_at).to_time
